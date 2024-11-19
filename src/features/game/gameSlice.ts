@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const DEFAULT_POSSIBLE_TIME = 5;
-export const POSSIBLE_TIMES: number[] = [1, DEFAULT_POSSIBLE_TIME, 10, 20]; // possible target times in seconds
+export const POSSIBLE_TIMES: number[] = [1, DEFAULT_POSSIBLE_TIME, 7, 10, 15, 20]; // possible target times in seconds
 
 interface GameState {
   targetTime: number;

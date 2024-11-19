@@ -1,0 +1,56 @@
+.timepickerCnt {
+  position: relative;
+  margin: 0 auto;
+  width: 800px;
+  height: 580px;
+}
+
+.logoCnt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 520px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-1 {
+  top: 20%;
+  left: 10%;
+}
+.button-2 {
+  top: 50%;
+  left: 0;
+}
+.button-3 {
+  bottom: 10%;
+  left: 10%;
+}
+.button-4 {
+  top: 20%;
+  right: 10%;
+}
+.button-5 {
+  top: 50%;
+  right: 0;
+}
+.button-6 {
+  bottom: 10%;
+  right: 10%;
+}
+
+.trophy-bronze {
+  color: rgb(205, 127, 50);
+}
+.trophy-silver {
+  color: rgb(192, 192, 192);
+}
+.trophy-gold {
+  color: rgb(255, 215, 0);
+}
+.trophy-diamond {
+  color: rgb(185, 242, 255);
+}

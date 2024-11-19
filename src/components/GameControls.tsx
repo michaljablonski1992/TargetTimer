@@ -1,37 +1,24 @@
 import { useDispatch } from 'react-redux';
+import { useAppSelector } from '@/hooks/useAppSelector';
 import {
-  setTargetTime,
   startGame,
   stopGame,
   resetGame,
-  POSSIBLE_TIMES,
-  DEFAULT_POSSIBLE_TIME
 } from '../features/game/gameSlice';
 import { Button } from './ui/button';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { CrosshairIcon, EyeIcon } from 'lucide-react';
 
 const GameControls = () => {
   const dispatch = useDispatch();
-
-  const handleTimeChange = (pt: number) => {
-    dispatch(setTargetTime(pt));
-    dispatch(resetGame());
-  };
+  const startTime = useAppSelector(state => state.game.startTime);
+  const stopTime = useAppSelector(state => state.game.stopTime);
+  const aiming = startTime && !stopTime;
 
   return (
-    <div>
-      <ToggleGroup defaultValue={DEFAULT_POSSIBLE_TIME.toString()} type="single">
-        {POSSIBLE_TIMES.map((pt) => {
-          return (
-            <ToggleGroupItem onClick={() => handleTimeChange(pt)} value={pt.toString()}>
-              {pt}
-            </ToggleGroupItem>
-          );
-        })}
-      </ToggleGroup>
-      <Button onClick={() => dispatch(startGame())}>Start</Button>
-      <Button onClick={() => dispatch(stopGame())}>Stop</Button>
-      <Button onClick={() => dispatch(resetGame())}>Reset</Button>
+    <div className='flex justify-center gap-6'>
+      {!aiming && <Button className='w-32' onClick={() => dispatch(startGame())}><EyeIcon />AIM</Button> }
+      {aiming && <Button className='bg-destructive hover:bg-red-600 w-32' onClick={() => dispatch(stopGame())}><CrosshairIcon />FIRE!</Button>}
+      <Button className='bg-secondary' onClick={() => dispatch(resetGame())}>RESET</Button>
     </div>
   );
 };
