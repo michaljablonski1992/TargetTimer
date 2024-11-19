@@ -26,6 +26,7 @@ const gameSlice = createSlice({
     },
     startGame(state) {
       state.startTime = Date.now();
+      state.stopTime = null;
     },
     stopGame(state) {
       if (state.startTime && state.targetTime) {
@@ -51,5 +52,5 @@ const gameSlice = createSlice({
 });
 
 
-export const gameSliceActions = gameSlice.actions;
+export const { setTargetTime, startGame, stopGame, resetGame } = gameSlice.actions;
 export default gameSlice.reducer;
