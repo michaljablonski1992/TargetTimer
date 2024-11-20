@@ -41,17 +41,33 @@ describe('gameSlice reducer', () => {
     jest.spyOn(Date, 'now').mockImplementation(() => mockStopTime);
 
     const nextState = gameReducer(stateWithStartTime, stopGame());
-    const elapsed = (mockStopTime - mockStartTime) / 1000; // 5 seconds
-    const difference = Math.abs(stateWithStartTime.targetTime - elapsed);
 
     expect(nextState.stopTime).toBe(mockStopTime);
-    expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(difference);
+    expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(0);
+    jest.restoreAllMocks();
+  });
+
+  it('should not update best results when difference is negative', () => {
+    const mockStartTime = 1630000000000;
+    const mockStopTime = 1630000005001; // 0.001s too late
+    const stateWithStartTime = {
+      ...reducerInitialState,
+      startTime: mockStartTime,
+      targetTime: 5,
+    };
+
+    jest.spyOn(Date, 'now').mockImplementation(() => mockStopTime);
+
+    const nextState = gameReducer(stateWithStartTime, stopGame());
+
+    expect(nextState.stopTime).toBe(mockStopTime);
+    expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(null); // not updated
     jest.restoreAllMocks();
   });
 
   it('should not update best result if current result is worse', () => {
     const mockStartTime = 1630000000000; // Mock timestamp
-    const mockStopTime = 1630000005600; // 0.6 seconds later
+    const mockStopTime = 1630000004400; // 0.6 seconds before target
 
     const startState = {
       ...reducerInitialState,
@@ -67,8 +83,6 @@ describe('gameSlice reducer', () => {
       .mockImplementation(() => mockStopTime);
 
     const nextState = gameReducer(startState, stopGame());
-    const elapsedTime = (mockStopTime - mockStartTime) / 1000; // 10 seconds
-
     expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(0.5); // Best result remains unchanged
 
     dateNowSpy.mockRestore();
@@ -76,7 +90,7 @@ describe('gameSlice reducer', () => {
 
   it('should update best result if current result is better', () => {
     const mockStartTime = 1630000000000; // Mock timestamp
-    const mockStopTime = 1630000005100; // 0.1 seconds after
+    const mockStopTime = 1630000004900; // 0.1 seconds before target
 
     const startState = {
       ...reducerInitialState,
@@ -92,10 +106,7 @@ describe('gameSlice reducer', () => {
       .mockImplementation(() => mockStopTime);
 
     const nextState = gameReducer(startState, stopGame());
-    const elapsedTime = (mockStopTime - mockStartTime) / 1000; // 10 seconds
-    const difference = Math.abs(initialState.targetTime - elapsedTime);
-
-    expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(difference); // Best result should be changed
+    expect(nextState.bestResults[DEFAULT_POSSIBLE_TIME]).toBe(0.1); // Best result should be changed
 
     dateNowSpy.mockRestore();
   });

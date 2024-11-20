@@ -14,7 +14,7 @@ export function humanSeconds(seconds: number, toFixed?: boolean) {
 export function getAccuracy(targetTime: number, difference: number | null) {
   if (!difference) { return 0; }
   const accuracy = (1 - (difference / targetTime)) * 100;
-  return accuracy;
+  return roundTo(accuracy, 2);
 }
 
 // get class for award
@@ -26,3 +26,8 @@ export function getAward(accuracy: number) {
   if (accuracy === 100) return 'diamond';
   return null;
 }
+
+export const roundTo = (num: number, decimals: number): number => {
+  const factor = Math.pow(10, decimals);
+  return Math.round(num * factor) / factor;
+};

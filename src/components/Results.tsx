@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { humanSeconds } from '@/lib/utils';
+import { humanSeconds, roundTo } from '@/lib/utils';
 
 const Results = () => {
   const targetTime = useAppSelector(state => state.game.targetTime);
@@ -8,16 +8,16 @@ const Results = () => {
   const bestResults = useAppSelector(state => state.game.bestResults);
 
   const elapsedTime = stopTime && startTime ? ((stopTime - startTime) / 1000) : null;
-  const difference = elapsedTime ? Math.abs(targetTime - elapsedTime) : null;
+  const difference = elapsedTime ? roundTo(targetTime - elapsedTime, 4) : null;
 
   return (
-    <div className='text-primary flex justify-center gap-6'>
+    <div className='text-primary flex justify-center gap-6 mt-10'>
       {elapsedTime && (
         <>
           <p>Target time: {humanSeconds(targetTime)}</p>
           <p>Your time: {humanSeconds(elapsedTime, true)}</p>
           {difference && <p>Difference: {humanSeconds(difference, true)}</p>}
-          <p>Best result for {humanSeconds(targetTime)}: {bestResults[targetTime] ? humanSeconds(bestResults[targetTime], true) : 'None'}</p>
+          <p>Best difference for {humanSeconds(targetTime)}: {bestResults[targetTime] ? humanSeconds(bestResults[targetTime], true) : '-'}</p>
         </>
       )}
     </div>

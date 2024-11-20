@@ -1,3 +1,4 @@
+import { roundTo } from '../../lib/utils';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const DEFAULT_POSSIBLE_TIME = 5;
@@ -33,12 +34,12 @@ const gameSlice = createSlice({
         const stopTime = Date.now();
         state.stopTime = stopTime;
         const elapsed = (stopTime - state.startTime) / 1000; // in seconds
-        const difference = Math.abs(state.targetTime - elapsed);
+        const difference = roundTo(state.targetTime - elapsed, 4);
 
         // best results update
         if (
-          state.bestResults[state.targetTime] === null ||
-          difference < state.bestResults[state.targetTime]!
+          difference >= 0 && (state.bestResults[state.targetTime] === null ||
+          difference < state.bestResults[state.targetTime]!)
         ) {
           state.bestResults[state.targetTime] = difference;
         }

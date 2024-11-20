@@ -5,7 +5,7 @@ import GameControls from './components/GameControls';
 
 function App() {
   return (
-    <div className='flex flex-col gap-12'>
+    <div className='flex flex-col'>
       <TimePicker />
       <GameControls />
       <Results />

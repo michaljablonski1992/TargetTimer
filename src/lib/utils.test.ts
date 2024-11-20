@@ -27,6 +27,7 @@ describe('utils', () => {
       expect(getAccuracy(5, 3)).toBe(40);
       expect(getAccuracy(5, 1.45)).toBe(71);
       expect(getAccuracy(5, 1.33)).toBe(73.4);
+      expect(getAccuracy(7, 0.019)).toBe(99.73);
     });
   });
   describe('getAward', () => {
