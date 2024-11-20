@@ -1,5 +1,7 @@
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { humanSeconds, roundTo } from '@/lib/utils';
+import styles from './Results.module.css';
+import clsx from 'clsx';
 
 const Results = () => {
   const targetTime = useAppSelector(state => state.game.targetTime);
@@ -11,7 +13,7 @@ const Results = () => {
   const difference = elapsedTime ? roundTo(targetTime - elapsedTime, 4) : null;
 
   return (
-    <div className='text-primary flex justify-center gap-6 mt-10'>
+    <div className={clsx('text-primary flex justify-center gap-6 mt-10', styles.resultsCnt)}>
       {elapsedTime && (
         <>
           <p>Target time: {humanSeconds(targetTime)}</p>

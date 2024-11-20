@@ -5,17 +5,24 @@ import {
   resetGame,
   POSSIBLE_TIMES,
   DEFAULT_POSSIBLE_TIME,
+  startGame,
+  stopGame,
 } from '../features/game/gameSlice';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { getAccuracy, getAward, humanSeconds, roundTo } from '@/lib/utils';
-import styles from './TimePicker.module.css';
+import styles from './GameBoard.module.css';
 import clsx from 'clsx';
-import { TrophyIcon } from 'lucide-react';
+import { CrosshairIcon, EyeIcon, TrophyIcon } from 'lucide-react';
 import { MouseEvent, useState } from 'react';
+import { Button } from './ui/button';
+import Results from './Results';
 
-const TimePicker = () => {
+const GameBoard = () => {
   const dispatch = useDispatch();
   const bestResults = useAppSelector((state) => state.game.bestResults);
+  const startTime = useAppSelector((state) => state.game.startTime);
+  const stopTime = useAppSelector((state) => state.game.stopTime);
+  const aiming = startTime && !stopTime;
   const [timeSelected, setTimeSelected] = useState<string>(
     DEFAULT_POSSIBLE_TIME.toString()
   );
@@ -32,9 +39,10 @@ const TimePicker = () => {
   };
 
   return (
-    <div className={styles.timepickerCnt}>
+    <div className={styles.GameBoardCnt}>
       <div className={styles.logoCnt}>
         <img
+        
           src="/images/logo-transparent-compressed.png"
           alt="Logo image"
         ></img>
@@ -42,7 +50,7 @@ const TimePicker = () => {
       <ToggleGroup
         onValueChange={handleTimeChange}
         defaultValue={timeSelected}
-        className="customGroup absolute w-full h-full"
+        className={clsx("customGroup absolute lg:w-full lg:h-full flex flex-wrap gap-6", styles.timesGroup)}
         variant="outline"
         type="single"
       >
@@ -58,6 +66,24 @@ const TimePicker = () => {
           );
         })}
       </ToggleGroup>
+      <div className={styles.btnActionCnt}>
+        {!aiming && (
+          <Button onClick={() => dispatch(startGame())}>
+            <EyeIcon />
+            AIM
+          </Button>
+        )}
+        {aiming && (
+          <Button
+            className="bg-destructive hover:bg-red-600 hover:opacity-90"
+            onClick={() => dispatch(stopGame())}
+          >
+            <CrosshairIcon />
+            FIRE!
+          </Button>
+        )}
+      </div>
+      <Results />
     </div>
   );
 };
@@ -87,19 +113,19 @@ const PossibleTime = ({
   return (
     <div
       className={clsx(
-        'flex flex-col gap-2 absolute',
+        'flex flex-col gap-2 static lg:absolute',
         styles[`button-${idx + 1}`]
       )}
     >
       <ToggleGroupItem
         onClick={preventDeselect}
         value={possibleTime.toString()}
-        className="w-40"
+        className="w-40 "
       >
         {humanSeconds(possibleTime).toUpperCase()}
       </ToggleGroupItem>
       <div>
-        <span className="flex gap-2">
+        <span className='flex gap-2'>
           <span className="text-primary">
             Accuracy: {roundTo(accuracy, 2)}%
           </span>
@@ -113,4 +139,4 @@ const PossibleTime = ({
   );
 };
 
-export default TimePicker;
+export default GameBoard;

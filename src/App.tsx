@@ -1,14 +1,10 @@
 import './App.css';
-import TimePicker from './components/TimePicker';
-import Results from './components/Results';
-import GameControls from './components/GameControls';
+import GameBoard from './components/GameBoard';
 
 function App() {
   return (
-    <div className='flex flex-col'>
-      <TimePicker />
-      <GameControls />
-      <Results />
+    <div className='flex flex-col p-6 pt-0 lg:p-0'>
+      <GameBoard />
     </div>
   );
 }

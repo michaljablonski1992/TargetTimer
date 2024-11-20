@@ -1,0 +1,12 @@
+.resultsCnt {
+  position: absolute;
+  bottom: -10%;
+}
+
+
+@media (max-width: 1024px) {
+  .resultsCnt {
+    position: initial;
+    @apply pb-6 mt-0;
+  }
+}
