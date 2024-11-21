@@ -30,13 +30,18 @@
 
 .btnActionCnt {
   @apply rounded-full absolute left-1/2 top-1/2 flex justify-center;
-  transform: translate(-50%, -18%);
+  transform: translate(-51%, -18%);
 }
 
 .btnActionCnt button {
   @apply flex flex-col gap-1 rounded-full w-16 h-16;
   font-weight: 700;
 }
+
+.fireBtn {
+  scale: 0.8;
+}
+
 
 @media (max-width: 1023px) {
   .timesGroup, .logoCnt, .logoCnt img, .btnActionCnt {
@@ -55,27 +60,27 @@
 
 .button-1 {
   top: 25%;
-  left: -14%;
+  left: -16%;
 }
 .button-2 {
   top: 50%;
-  left: -30%;
+  left: -32%;
 }
 .button-3 {
   top: 75%;
-  left: -17%;
+  left: -19%;
 }
 .button-4 {
   top: 25%;
-  right: -17%;
+  right: -19%;
 }
 .button-5 {
   top: 50%;
-  right: -30%;
+  right: -32%;
 }
 .button-6 {
   top: 75%;
-  right: -12%;
+  right: -14%;
 }
 
 .trophy-bronze {
