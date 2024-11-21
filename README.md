@@ -1,50 +1,26 @@
-# React + TypeScript + Vite
+# TargetTimer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TargetTimer is an interactive and engaging timer-based game where precision and reaction time are put to the ultimate test. Set a target time, start the timer, and stop it as close as possible to your target without exceeding it. With sleek animations and an FPS-inspired design, TargetTimer brings the excitement of competitive gaming to a simple yet challenging concept.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Target Timer Selection**: Choose from predefined target times to test your precision (e.g., 5, 10, 20 seconds).
+- **Interactive Gameplay**: Start the timer and stop it as close as possible to the target time to earn trophies.
+- **Dynamic Feedback**: Receive instant feedback on your performance, including ranks like Bronze, Silver, Gold, and Diamond.
+- **FPS-Inspired Design**: Immersive visuals and animations styled like popular first-person shooter games.
+- **Mobile-Friendly**: Fully responsive design for seamless gameplay on mobile devices.
+- **Simple and Intuitive Interface**: Easy-to-navigate UI with clear instructions and feedback.
 
-## Expanding the ESLint configuration
+## Built With
+- **ReactJS** - A JavaScript library for building interactive user interfaces
+- **Redux** - State management to handle gameplay and user performance
+- **Tailwind CSS** - Utility-first CSS framework for sleek, responsive design
+- **TypeScript** - Ensures type-safe development and robust code
+- **Framer Motion** - Smooth animations and transitions for an FPS-like feel
+- **Vite** - A fast development server and build tool
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## License
+This project is licensed under the MIT License.
