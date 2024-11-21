@@ -210,7 +210,7 @@ const PossibleTime = ({
             <RevealText
               key={`${possibleTime}-bestResult-${bestResult}`}
               text={`Best: ${
-                bestResult ? humanSeconds(bestResult, true) : '-'
+                bestResult !== null ? humanSeconds(bestResult, true) : '-'
               }`}
             />
           </span>

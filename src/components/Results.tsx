@@ -47,7 +47,7 @@ const Results = () => {
           <motion.p variants={itemVariants} className={styles.resultLine}>
             Your time: {humanSeconds(elapsedTime, true)}
           </motion.p>
-          {difference && (
+          {difference !== null && (
             <motion.p variants={itemVariants} className={styles.resultLine}>
               Difference: {humanSeconds(difference, true)}
             </motion.p>
