@@ -159,11 +159,14 @@ const PossibleTime = ({
     }
   };
 
+  console.log(styles);
+
   return (
     <div
       className={clsx(
         'flex flex-col static lg:absolute gap-3',
-        styles[`button-${idx + 1}`]
+        styles[`button-${idx + 1}`],
+        styles.possibleTimeCnt
       )}
     >
       <div className="button-cnt">
@@ -171,7 +174,6 @@ const PossibleTime = ({
           onClick={handleOnClick}
           value={possibleTime.toString()}
           disabled={targetTimeReloading}
-          className="w-52"
         >
           {isReloading
             ? 'RELOADING...'

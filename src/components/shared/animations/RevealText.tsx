@@ -27,7 +27,6 @@ const RevealText = ({ text }: Props) => {
       animate="visible"
       style={{
         display: 'flex',
-        overflow: 'hidden',
       }}
       className='text-primary'
     >
