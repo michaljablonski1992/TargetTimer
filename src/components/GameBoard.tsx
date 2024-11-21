@@ -100,22 +100,26 @@ const GameBoard = () => {
       </ToggleGroup>
       <div className={styles.btnActionCnt}>
         {!aiming && (
-          <MotionButton
-            whileHover={{ scale: 0.8 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-            onClick={() => dispatch(startGame())}
-            disabled={isReloading}
-          >
-            <EyeIcon />
-            AIM
-          </MotionButton>
+          <div className={styles.aimBtnCnt}>
+            <MotionButton
+              variant='empty'
+              whileHover={{
+                scale: 0.8
+              }}
+              transition={{ type: 'spring', stiffness: 200 }}
+              onClick={() => dispatch(startGame())}
+              disabled={isReloading}
+              className={styles.aimBtn}
+            >
+              <EyeIcon />
+              AIM
+            </MotionButton>
+          </div>
         )}
         {aiming && (
           <MotionButton
-            className={clsx(
-              'bg-destructive hover:bg-red-600 hover:opacity-90',
-              styles.fireBtn
-            )}
+            variant='empty'
+            className={styles.fireBtn}
             onClick={() => dispatch(stopGame())}
           >
             <CrosshairIcon />
