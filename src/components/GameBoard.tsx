@@ -49,7 +49,7 @@ const GameBoard = () => {
     targetTime.toString()
   );
 
-  let reloadingTimeoutId: NodeJS.Timeout; 
+  let reloadingTimeoutId: NodeJS.Timeout;
   const handleTimeChange = (value: string) => {
     // prevent deselect
     if (value === '') {
@@ -142,7 +142,7 @@ const PossibleTime = ({
   bestResult,
   timeSelected,
   reloadingTargetTime,
-  targetTimeReloading
+  targetTimeReloading,
 }: PossibleTimeProps) => {
   const accuracy = getAccuracy(possibleTime, bestResult);
   const award = getAward(accuracy);
@@ -158,27 +158,29 @@ const PossibleTime = ({
   return (
     <div
       className={clsx(
-        'flex flex-col static lg:absolute gap-1',
+        'flex flex-col static lg:absolute gap-3',
         styles[`button-${idx + 1}`]
       )}
     >
-      <MotionToggleGroupItem
-        onClick={handleOnClick}
-        value={possibleTime.toString()}
-        disabled={targetTimeReloading}
-        className="w-52"
-      >
-        {isReloading
-          ? 'RELOADING...'
-          : humanSeconds(possibleTime).toUpperCase()}
-      </MotionToggleGroupItem>
+      <div className="button-cnt">
+        <MotionToggleGroupItem
+          onClick={handleOnClick}
+          value={possibleTime.toString()}
+          disabled={targetTimeReloading}
+          className="w-52"
+        >
+          {isReloading
+            ? 'RELOADING...'
+            : humanSeconds(possibleTime).toUpperCase()}
+        </MotionToggleGroupItem>
+      </div>
       {/* Ammo Indicators */}
       <div className={`flex gap-2 mt-1 ${isReloading ? '' : 'hidden'}`}>
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             custom={i}
-            className='w-4 h-10 bg-primary rounded-md'
+            className="w-4 h-10 bg-primary rounded-md"
             initial="hidden"
             animate={isReloading ? 'visible' : 'hidden'}
             variants={ammoVariants}
