@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppSelector } from '../hooks/useAppSelector';
 import {
   setTargetTime,
   resetGame,
@@ -8,9 +8,9 @@ import {
   startGame,
   stopGame,
 } from '../features/game/gameSlice';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import { ToggleGroup, ToggleGroupItem } from '../components/ui/toggle-group';
 import { motion } from 'framer-motion';
-import { getAccuracy, getAward, humanSeconds, roundTo } from '@/lib/utils';
+import { getAccuracy, getAward, humanSeconds, roundTo } from '../lib/utils';
 import styles from './GameBoard.module.css';
 import clsx from 'clsx';
 import { CrosshairIcon, EyeIcon, TrophyIcon } from 'lucide-react';

@@ -1,5 +1,5 @@
-import { useAppSelector } from '@/hooks/useAppSelector';
-import { humanSeconds, roundTo } from '@/lib/utils';
+import { useAppSelector } from '../hooks/useAppSelector';
+import { humanSeconds, roundTo } from '../lib/utils';
 import styles from './Results.module.css';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
