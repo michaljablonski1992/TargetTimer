@@ -61,7 +61,7 @@
 }
 
 
-@media (max-width: 425px)
+@media (max-width: 475px)
 {
   .GameBoardCnt {
     @apply p-0 mt-6;
