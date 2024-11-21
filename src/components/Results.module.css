@@ -1,12 +1,27 @@
 .resultsCnt {
   position: absolute;
-  bottom: -10%;
+  bottom: -60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
 }
 
 
-@media (max-width: 1024px) {
+.resultLine {
+  @apply text-center px-20 py-2 text-primary bg-zinc-800;;
+  text-align: center;
+}
+.resultLine:nth-child(odd) {
+  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+}
+.resultLine:nth-child(even) {
+  clip-path: polygon(0 0, 85% 0, 100% 100%, 15% 100%);
+}
+
+@media (max-width: 1023px) {
   .resultsCnt {
     position: initial;
-    @apply pb-6 mt-0;
+    transform: initial;
+    @apply pb-6 mt-0 mx-auto;
   }
 }

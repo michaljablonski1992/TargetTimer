@@ -35,9 +35,10 @@
 
 .btnActionCnt button {
   @apply flex flex-col gap-1 rounded-full w-16 h-16;
+  font-weight: 700;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .timesGroup, .logoCnt, .logoCnt img, .btnActionCnt {
     position: initial;
   }
@@ -45,7 +46,7 @@
     transform: none;
   }
   .btnActionCnt {
-    @apply py-6;
+    @apply py-6 mx-auto;
   }
   .btnActionCnt button {
     @apply w-24 h-24;
@@ -54,27 +55,27 @@
 
 .button-1 {
   top: 25%;
-  left: -9%;
+  left: -14%;
 }
 .button-2 {
   top: 50%;
-  left: -25%;
+  left: -30%;
 }
 .button-3 {
   top: 75%;
-  left: -14%;
+  left: -17%;
 }
 .button-4 {
   top: 25%;
-  right: -12%;
+  right: -17%;
 }
 .button-5 {
   top: 50%;
-  right: -25%;
+  right: -30%;
 }
 .button-6 {
   top: 75%;
-  right: -9%;
+  right: -12%;
 }
 
 .trophy-bronze {

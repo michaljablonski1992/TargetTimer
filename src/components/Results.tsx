@@ -13,13 +13,13 @@ const Results = () => {
   const difference = elapsedTime ? roundTo(targetTime - elapsedTime, 4) : null;
 
   return (
-    <div className={clsx('text-primary flex justify-center gap-6 mt-10', styles.resultsCnt)}>
+    <div className={clsx('text-primary flex flex-col justify-center gap-6 mt-10', styles.resultsCnt)}>
       {elapsedTime && (
         <>
-          <p>Target time: {humanSeconds(targetTime)}</p>
-          <p>Your time: {humanSeconds(elapsedTime, true)}</p>
-          {difference && <p>Difference: {humanSeconds(difference, true)}</p>}
-          <p>Best difference for {humanSeconds(targetTime)}: {bestResults[targetTime] ? humanSeconds(bestResults[targetTime], true) : '-'}</p>
+          <p className={styles.resultLine}>Target time: {humanSeconds(targetTime)}</p>
+          <p className={styles.resultLine}>Your time: {humanSeconds(elapsedTime, true)}</p>
+          {difference && <p className={styles.resultLine}>Difference: {humanSeconds(difference, true)}</p>}
+          <p className={styles.resultLine}>Best difference for {humanSeconds(targetTime)}: {bestResults[targetTime] ? humanSeconds(bestResults[targetTime], true) : '-'}</p>
         </>
       )}
     </div>

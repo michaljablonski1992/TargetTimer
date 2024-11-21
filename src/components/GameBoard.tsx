@@ -120,7 +120,7 @@ const PossibleTime = ({
       <ToggleGroupItem
         onClick={preventDeselect}
         value={possibleTime.toString()}
-        className="w-40 "
+        className="w-48"
       >
         {humanSeconds(possibleTime).toUpperCase()}
       </ToggleGroupItem>

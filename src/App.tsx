@@ -3,7 +3,7 @@ import GameBoard from './components/GameBoard';
 
 function App() {
   return (
-    <div className='flex flex-col p-6 pt-0 lg:p-0'>
+    <div className='flex flex-col p-6 pt-0 mx-auto w-full lg:p-0'>
       <GameBoard />
     </div>
   );
