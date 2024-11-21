@@ -22,6 +22,7 @@ describe('utils', () => {
     it('should give correct accuracy', () => {
       expect(getAccuracy(10, 1)).toBe(90);
       expect(getAccuracy(5, 5)).toBe(0);
+      expect(getAccuracy(5, 0)).toBe(100);
       expect(getAccuracy(5, null)).toBe(0);
       expect(getAccuracy(5, 2.5)).toBe(50);
       expect(getAccuracy(5, 3)).toBe(40);

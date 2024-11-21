@@ -12,7 +12,7 @@ export function humanSeconds(seconds: number, toFixed?: boolean) {
 }
 
 export function getAccuracy(targetTime: number, difference: number | null) {
-  if (!difference) { return 0; }
+  if (difference === null) { return 0; }
   const accuracy = (1 - (difference / targetTime)) * 100;
   return roundTo(accuracy, 2);
 }
