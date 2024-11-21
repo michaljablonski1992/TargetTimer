@@ -23,7 +23,6 @@ const Results = () => {
   const targetTime = useAppSelector((state) => state.game.targetTime);
   const startTime = useAppSelector((state) => state.game.startTime);
   const stopTime = useAppSelector((state) => state.game.stopTime);
-  const bestResults = useAppSelector((state) => state.game.bestResults);
 
   const elapsedTime =
     stopTime && startTime ? (stopTime - startTime) / 1000 : null;
@@ -51,12 +50,6 @@ const Results = () => {
           Difference: {humanSeconds(difference, true)}
         </motion.p>
       )}
-      <motion.p variants={itemVariants} className={styles.resultLine}>
-        Best difference for {humanSeconds(targetTime)}:{' '}
-        {bestResults[targetTime]
-          ? humanSeconds(bestResults[targetTime], true)
-          : '-'}
-      </motion.p>
     </motion.div>
   );
 };
