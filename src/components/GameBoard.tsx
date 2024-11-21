@@ -4,7 +4,6 @@ import {
   setTargetTime,
   resetGame,
   POSSIBLE_TIMES,
-  DEFAULT_POSSIBLE_TIME,
   startGame,
   stopGame,
 } from '../features/game/gameSlice';
