@@ -40,13 +40,14 @@ const GameBoard = () => {
   const bestResults = useAppSelector((state) => state.game.bestResults);
   const startTime = useAppSelector((state) => state.game.startTime);
   const stopTime = useAppSelector((state) => state.game.stopTime);
+  const targetTime = useAppSelector((state) => state.game.targetTime);
   const [reloadingTargetTime, setReloadingTargetTime] = useState<string | null>(
     null
   );
   const isReloading = !!reloadingTargetTime;
   const aiming = startTime && !stopTime;
   const [timeSelected, setTimeSelected] = useState<string>(
-    DEFAULT_POSSIBLE_TIME.toString()
+    targetTime.toString()
   );
 
   let reloadingTimeoutId: NodeJS.Timeout; 

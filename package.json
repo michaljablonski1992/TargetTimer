@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --config jest.config.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
