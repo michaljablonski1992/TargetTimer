@@ -45,7 +45,7 @@
 }
 .fireBtn {
   scale: 0.8;
-  @apply text-black font-bold rounded-full bg-gradient-to-t from-red-600 via-red-700 to-red-800 hover:from-red-200 hover:via-red-300 hover:to-red-400 shadow-lg;
+  @apply text-black font-bold rounded-full bg-gradient-to-t from-red-600 via-red-700 to-red-800 hover:from-red-400 hover:via-red-500 hover:to-yellow-400 shadow-lg;
   box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.6),
     inset 0 -3px 4px rgba(0, 0, 0, 0.7), 0 4px 5px rgba(0, 0, 0, 1);
 }
