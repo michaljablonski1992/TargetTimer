@@ -28,29 +28,33 @@ const Results = () => {
     stopTime && startTime ? (stopTime - startTime) / 1000 : null;
   const difference = elapsedTime ? roundTo(targetTime - elapsedTime, 4) : null;
 
-  if (!elapsedTime) return null;
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className={clsx(
-        'text-primary flex flex-col justify-center gap-6 mt-10',
-        styles.resultsCnt
+    <>
+      {!elapsedTime && <div className="h-48"></div>}
+      {elapsedTime && (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className={clsx(
+            'text-primary flex flex-col justify-center gap-6 mt-10',
+            styles.resultsCnt
+          )}
+        >
+          <motion.p variants={itemVariants} className={styles.resultLine}>
+            Target time: {humanSeconds(targetTime)}
+          </motion.p>
+          <motion.p variants={itemVariants} className={styles.resultLine}>
+            Your time: {humanSeconds(elapsedTime, true)}
+          </motion.p>
+          {difference && (
+            <motion.p variants={itemVariants} className={styles.resultLine}>
+              Difference: {humanSeconds(difference, true)}
+            </motion.p>
+          )}
+        </motion.div>
       )}
-    >
-      <motion.p variants={itemVariants} className={styles.resultLine}>
-        Target time: {humanSeconds(targetTime)}
-      </motion.p>
-      <motion.p variants={itemVariants} className={styles.resultLine}>
-        Your time: {humanSeconds(elapsedTime, true)}
-      </motion.p>
-      {difference && (
-        <motion.p variants={itemVariants} className={styles.resultLine}>
-          Difference: {humanSeconds(difference, true)}
-        </motion.p>
-      )}
-    </motion.div>
+    </>
   );
 };
 

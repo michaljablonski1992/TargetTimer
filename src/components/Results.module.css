@@ -7,7 +7,7 @@
 }
 
 .resultLine {
-  @apply text-center py-1 px-10 text-primary bg-zinc-800;
+  @apply text-center py-2 px-10 text-primary bg-zinc-800;
   max-width: 100vw;
   text-align: center;
 }
